@@ -1,0 +1,55 @@
+# Serve para colocar algumas configurações do Terraform
+terraform{
+ 
+}
+ 
+# Serve para mencionarmos qual o provedor que iremos utilizar e o nome do provider é informado dentro das aspas duplas
+provider "aws" {
+ 
+}
+ 
+# Serve para informar quais recursos iremos criar no nosso provider, ou seja, ela vai criar os serviços no nosso provider
+# funciona da seguinte maneira: mencionamos o nome do bloco "resource", entres as primeiras aspas duplas vamos atribuir o nome
+# do resouce que iremos criar, por exemplo: se quisséssemos criar uma instância na AWS, então, utilizamos o bloco AWS Intance
+# no segundo par de aspas duplas, é o nome que nós vamos usar internamente no nosso código do Terraform, pode ser o nome que você
+# achar que faça mais sentido dentro do nosso código, este é o nome que iremos referenciar este bloco de resource em outras partes de nosso código
+resource "aws_instance" "vm1" {
+ 
+}
+ 
+# Com uma estrutura parecida com o bloco do resource, ele serve para mencionarmos qual é o tipo de serviço ou qual é o tipo
+# de recursos que nós vamos querer usar com a finalidad de pergar alguma informação de fora do nosso código do Terraform para
+# ser utilizado dentro do código do Terraform. Por exemplo Caso você queira pegar uma informação de uma imagem da AWS, então,
+# vamos usar o bloco aws_ami que e o responsável em buscar informações de uma imagem da AWS.
+# O segundo par de aspas duplas, você dará um nome interno que ele será o responsável por referenciar esse bloco de data dentro do código
+# e pode ser o nome que faça sentido ao seu código. Vou usar para esta aula o nome de Image.
+data "aws_ami" "image" {
+ 
+}
+ 
+# Tanto serve para módulo remotos e locais, atriubimos um nome para ele que é o que iremos referencia esse bloco dentro do código e pode
+# ser o nome que faça sentido ao seu código. Por Exemplo: digamos que queiramos criar "mencionar" uma estrutura network. uma estrutura VPC - Virtual
+# Private Cloud (Virutal Nuvem Privada), lá na AWS . Vamos chamar esse módulo de NETWORK
+module "network" {
+ 
+}
+ 
+# Serve para mencionarmos uma vairável que iremos utilizar dentro do nosso código do Terraform. O nome pode ser o que faça sentido ao seu código, no
+# nosso exemplo iremos atribuir um nome para a instância da AWS "VM_NAME".
+variable "vm_name" {
+ 
+}
+ 
+# Serve para colocarmos para fora no nosso código do Terraform alguma informação que foi gerada atravpes daquele código. Por exemplo:
+# em uma pipeline pegar uma informação que foi gerada no nosso código do Terraform e usar para outra cousa durante a nossa pipeline.
+# Digamos que queiramos colocar para fora o IP da instância que criamos logo acima, então, vamos colocar o nome "VM1_IP"
+output "vm1_ip" {
+ 
+}
+ 
+# Serve para definirmos porções do nosso código ou funções que nós usamos com frequência. Para não ter que ficar escrevendo aquele código
+# repetidamente, então, nós declaramos ele aqui, depois quando quisermos retutilizar aqui aquela porção de código que usamos frequentemente, apenas
+# basta referenciar aquele locals no outro ponto do nosso código.
+locals {
+ 
+}
